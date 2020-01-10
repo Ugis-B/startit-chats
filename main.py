@@ -1,14 +1,15 @@
-from flask import Flask
-
+from flask import Flask, render_template
 
 app = Flask('app')
-app.debug=True
 
 @app.route('/')
-def index_page():
-  return "Sveiciens no StartIT!"
+def index_lapa():
+  return render_template('index.html')
 
+@app.route('/health')
+def health_page():
+  return "OK"
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
-    app.run(threaded=True, port=5000, debug=True)
+    app.run(threaded=True, port=5000)
